@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">StocksApp</string>
+    <string name="label_default_text">100.0</string>
+    <string name="label_error_text">Error</string>
+    <string name="base">Base Currency</string>
+    <string name="imageview_desc">Stocks Logo</string>
+
+    <string-array name="currency_array">
+        <item>CAD</item>
+        <item>USD</item>
+    </string-array>
+
+</resources>
