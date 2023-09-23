@@ -4,32 +4,32 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/backgroundColor"
+    android:background="@color/white"
     tools:context=".MainActivity">
 
     <TextView
         android:id="@+id/priceLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="148dp"
-        android:layout_marginTop="268dp"
-        android:layout_marginEnd="147dp"
+        android:layout_marginStart="143dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="143dp"
         android:text="@string/label_default_text"
         android:textColor="@color/black"
-        android:textSize="45sp"
+        android:textSize="48sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.529"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/SnP500" />
 
     <ImageView
         android:id="@+id/logoImage"
-        android:layout_width="291dp"
-        android:layout_height="206dp"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="60dp"
+        android:layout_width="324dp"
+        android:layout_height="166dp"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="46dp"
+        android:layout_marginEnd="35dp"
         android:contentDescription="@string/imageview_desc"
         android:src="@drawable/bull"
         app:layout_constraintEnd_toEndOf="parent"
@@ -38,16 +38,15 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="298dp"
-        android:layout_height="55dp"
-        android:layout_marginStart="134dp"
-        android:layout_marginTop="112dp"
-        android:layout_marginEnd="172dp"
+        android:layout_width="393dp"
+        android:layout_height="58dp"
+        android:layout_marginStart="9dp"
+        android:layout_marginTop="104dp"
+        android:layout_marginEnd="9dp"
         android:text="@string/base"
         android:textAlignment="center"
         android:textSize="34sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.404"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/priceLabel"
         tools:ignore="TextSizeCheck" />
@@ -57,16 +56,31 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="146dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="4dp"
         android:layout_marginEnd="147dp"
         android:dropDownSelector="@color/black"
         android:entries="@array/currency_array"
         android:gravity="center_horizontal"
         android:minHeight="48dp"
+        android:outlineProvider="none"
         android:spinnerMode="dropdown"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <TextView
+        android:id="@+id/SnP500"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="91dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="92dp"
+        android:text="@string/snp_500"
+        android:textSize="60sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.47"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logoImage" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

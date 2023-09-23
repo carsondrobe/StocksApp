@@ -4,6 +4,7 @@
     <string name="label_error_text">Error</string>
     <string name="base">Base Currency</string>
     <string name="imageview_desc">Stocks Logo</string>
+    <string name="snp_500">S&amp;P 500</string>
 
     <string-array name="currency_array">
         <item>CAD</item>
