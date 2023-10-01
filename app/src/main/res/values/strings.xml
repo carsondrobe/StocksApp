@@ -1,14 +1,14 @@
 <resources>
     <string name="app_name">StocksApp</string>
-    <string name="label_default_text">100.0</string>
+    <string name="label_default_text">-</string>
     <string name="label_error_text">Error</string>
     <string name="base">Base Currency</string>
     <string name="imageview_desc">Stocks Logo</string>
     <string name="snp_500">S&amp;P 500</string>
 
     <string-array name="currency_array">
-        <item>CAD</item>
         <item>USD</item>
+        <item>CAD</item>
     </string-array>
 
 </resources>

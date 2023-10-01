@@ -12,16 +12,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="143dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="40dp"
         android:layout_marginEnd="143dp"
+        android:gravity="center"
         android:text="@string/label_default_text"
+        android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="48sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.529"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/SnP500" />
+        app:layout_constraintTop_toBottomOf="@+id/ticker" />
 
     <ImageView
         android:id="@+id/logoImage"
@@ -41,12 +42,13 @@
         android:layout_width="393dp"
         android:layout_height="58dp"
         android:layout_marginStart="9dp"
-        android:layout_marginTop="104dp"
+        android:layout_marginTop="65dp"
         android:layout_marginEnd="9dp"
         android:text="@string/base"
         android:textAlignment="center"
         android:textSize="34sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/priceLabel"
         tools:ignore="TextSizeCheck" />
@@ -56,7 +58,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="146dp"
-        android:layout_marginTop="4dp"
         android:layout_marginEnd="147dp"
         android:dropDownSelector="@color/black"
         android:entries="@array/currency_array"
@@ -65,22 +66,54 @@
         android:outlineProvider="none"
         android:spinnerMode="dropdown"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
-    <TextView
-        android:id="@+id/SnP500"
+    <EditText
+        android:id="@+id/ticker"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="91dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="92dp"
-        android:text="@string/snp_500"
+        android:hint="Enter Ticker"
+        android:inputType="textCapCharacters"
         android:textSize="60sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.47"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logoImage" />
+        app:layout_constraintTop_toBottomOf="@+id/logoImage"
+        android:maxLength="5"
+        android:gravity="center_horizontal"/>
+
+    <Button
+        android:id="@+id/resultsBtn"
+        android:layout_width="235dp"
+        android:layout_height="62dp"
+        android:layout_marginBottom="16dp"
+        android:fontFamily="@font/archivo_black"
+        android:text="View Results"
+        android:textColorLink="#3F51B5"
+        android:textSize="18sp"
+        app:backgroundTint="#015da2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/dailyCloseText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Today's Close"
+        android:textAlignment="center"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.485" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
