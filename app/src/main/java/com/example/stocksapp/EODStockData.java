@@ -1,6 +1,7 @@
 package com.example.stocksapp;
 
-public class Stock {
+// End Of Day Stock Data
+public class EODStockData {
     private double close;
     private String detail;
     public double getClose() {

@@ -30,31 +30,38 @@ public class MainActivity extends AppCompatActivity {
     private Button viewResults;
 
     private EditText tickerSymbolView;
+    private final double USDtoCADConversion = 1.35;
+    private final String tiingoApiKey = BuildConfig.TIINGO_API_KEY;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        initializeViews();
+        setupClickListeners();
+    }
+    private void initializeViews(){
         currencySpinner = findViewById(R.id.currencySpinner);
         viewResults = (Button) findViewById(R.id.resultsBtn);
         tickerSymbolView = (EditText) findViewById(R.id.ticker);
+        tickerClose = findViewById(R.id.priceLabel);
         currencySpinner.setSelection(0);
+    }
+    private void setupClickListeners(){
         viewResults.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String ticker;
-                ticker = (String) tickerSymbolView.getText().toString();
-                retrieveCloseInfo(ticker);
+                String tickerSymbol;
+                tickerSymbol = (String) tickerSymbolView.getText().toString();
+                retrieveCloseInfo(tickerSymbol);
             }
         });
     }
 
-    protected void retrieveCloseInfo(String ticker) {
-        tickerClose = findViewById(R.id.priceLabel);
-
+    protected void retrieveCloseInfo(String tickerSymbol) {
         OkHttpClient client = new OkHttpClient();
         MediaType JSON = MediaType.parse("application/json; charset=utf-8");
-        String url = "https://api.tiingo.com/tiingo/daily/" + ticker + "/prices?token=b8eeb0525ea6b650cb6915f3361fda61e7628ba0";
+        String url = "https://api.tiingo.com/tiingo/daily/" + tickerSymbol + "/prices?token=" + tiingoApiKey;
 
         Request request = new Request.Builder()
                 .url(url)
@@ -72,13 +79,14 @@ public class MainActivity extends AppCompatActivity {
                 if (response.isSuccessful()) {
                     final String myResponse = response.body().string();
                     Gson gson = new Gson();
-                    Stock[] stockDataArray = gson.fromJson(myResponse, Stock[].class);
+                    //Store End-Of-Day stock data in array
+                    EODStockData[] stockDataArray = gson.fromJson(myResponse, EODStockData[].class);
                     String selectedCurrency = currencySpinner.getSelectedItem().toString();
                     String closeValue;
                     if (selectedCurrency.equals("USD")) {
                         closeValue = String.valueOf(stockDataArray[0].getClose());
                     } else if (selectedCurrency.equals("CAD")) {
-                        double closeCAD = 1.35 * stockDataArray[0].getClose();
+                        double closeCAD = USDtoCADConversion * stockDataArray[0].getClose();
                         closeValue = String.format("%.2f", closeCAD);
                     } else {
                         closeValue = "Error";

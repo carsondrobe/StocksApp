@@ -1,11 +1,15 @@
+import org.gradle.initialization.Environment.Properties
+import java.util.*
+val properties = Properties().apply {
+    load(rootProject.file("local.properties").reader())
+}
+val myProp = properties["tiingoAPI"]
 plugins {
     id("com.android.application")
 }
-
 android {
     namespace = "com.example.stocksapp"
     compileSdk = 33
-
     defaultConfig {
         applicationId = "com.example.stocksapp"
         minSdk = 24
@@ -15,8 +19,16 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
-
+    buildFeatures {
+        buildConfig = true // Enable custom BuildConfig fields
+    }
     buildTypes {
+        debug {
+            buildConfigField("String", "TIINGO_API_KEY", "\"$myProp\"")
+        }
+        release {
+            buildConfigField("String", "TIINGO_API_KEY", "\"$myProp\"")
+        }
         release {
             isMinifyEnabled = false
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
